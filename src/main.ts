@@ -3,14 +3,20 @@ import youtubedl from "youtube-dl";
 import { logger } from "./config";
 import * as dotenv from "dotenv";
 import { bot } from "./bot";
+import { getAudio } from "./youtube";
+import { Info } from "youtube-dl";
 
+async function bootsrap() {
+  bot.launch();
+}
+bootsrap();
 //const bot = startBot(bot_token);
 
-bot.launch();
+//bot.launch();
 
 // Enable graceful stop
-process.once("SIGINT", () => bot.stop("SIGINT"));
-process.once("SIGTERM", () => bot.stop("SIGTERM"));
+//process.once("SIGINT", () => bot.stop("SIGINT"));
+//process.once("SIGTERM", () => bot.stop("SIGTERM"));
 
 /*
 const pathDir = `/home/sk146/projects/nodejs-test/data`;

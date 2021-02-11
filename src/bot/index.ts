@@ -2,31 +2,23 @@ import { Context, Telegraf } from "telegraf";
 import * as dotenv from "dotenv";
 import * as fs from "fs";
 import { logger } from "../config";
-import { getAudioFromYoutube } from "../youtube";
-// process.env.BOT_TOKEN
+import { getAudio } from "../youtube";
 dotenv.config();
+
 const bot_token = String(process.env.BOT_TOKEN);
-const pathDir = `/home/sk146/projects/nodejs-test/data`;
-const pathFille = `${pathDir}/myvideo.mp3`;
 const bot = new Telegraf(bot_token);
 
-bot.start((ctx: any) => ctx.reply("Welcom"));
-bot.help((ctx: any) => ctx.reply("Send me a link from youtube"));
+bot.start((ctx: any) => ctx.reply("Привет)"));
+bot.help((ctx: any) => ctx.reply("Пришли мне ссылку из ютуба)))"));
 
 bot.on("message", async (ctx: Context) => {
   try {
     const { message }: any = ctx.update;
     const { text } = message;
     const url = new URL(text);
-    const audio = getAudioFromYoutube(url);
-
-    audio.on("info", (info: any) => {
-      logger.info("Download started");
-      logger.info("filename: " + info._filename);
-      logger.info("size: " + info.size);
-    });
-
-    ctx.replyWithAudio({ source: audio });
+    const audio = getAudio(url);
+    await ctx.reply("Подожди минутку");
+    ctx.replyWithAudio(await audio);
   } catch (error) {
     logger.error(error);
     await ctx.reply("ERROR");
@@ -35,6 +27,12 @@ bot.on("message", async (ctx: Context) => {
 
 /*
 
+
+   audio.on("info", (info: any) => {
+      logger.info("Download started");
+      logger.info("filename: " + info._filename);
+      logger.info("size: " + info.size);
+    });
 
  const { message }: any = ctx.update;
     const { text } = message;
