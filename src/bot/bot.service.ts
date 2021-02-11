@@ -3,7 +3,7 @@ import * as youtube from "../youtube/youtube.service";
 import { UnknownHost } from "./errors";
 
 const getYoutubeAudio = async (url: URL) => {
-  const whitelist = ["youtu.be", "www.youtube.com"];
+  const whitelist = ["youtu.be", "www.youtube.com", "music.youtube.com"];
   if (!whitelist.includes(url.host)) {
     throw new UnknownHost(`Unknown host ${url.host}`);
   }
@@ -15,10 +15,3 @@ const getYoutubeAudio = async (url: URL) => {
 };
 
 export { getYoutubeAudio };
-
-/**
- errors 
-
- Video unavailable
- 
- */
