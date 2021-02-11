@@ -1,27 +1,5 @@
-import { Context, Telegraf } from "telegraf";
-import * as dotenv from "dotenv";
-import { logger } from "../config";
-import { getAudio } from "../youtube";
-dotenv.config();
-
-const bot_token = String(process.env.BOT_TOKEN);
-const bot = new Telegraf(bot_token);
-
-bot.start((ctx: any) => ctx.reply("Привет)"));
-bot.help((ctx: any) => ctx.reply("Пришли мне ссылку из ютуба)))"));
-
-bot.on("message", async (ctx: Context) => {
-  try {
-    await ctx.reply("Подожди минутку");
-    const { message }: any = ctx.update;
-    const { text } = message;
-    const url = new URL(text);
-    const audio = getAudio(url);
-    ctx.replyWithAudio(await audio);
-  } catch (error) {
-    logger.error(error);
-    await ctx.reply("ERROR");
-  }
-});
-
-export { bot };
+export * from "./bot";
+export * from "./bot.service";
+export * from "./bot.controller";
+export * from "./message.controller";
+export * from "./errors";
