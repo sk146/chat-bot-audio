@@ -12,11 +12,11 @@ bot.help((ctx: any) => ctx.reply("Пришли мне ссылку из ютуб
 
 bot.on("message", async (ctx: Context) => {
   try {
+    await ctx.reply("Подожди минутку");
     const { message }: any = ctx.update;
     const { text } = message;
     const url = new URL(text);
     const audio = getAudio(url);
-    await ctx.reply("Подожди минутку");
     ctx.replyWithAudio(await audio);
   } catch (error) {
     logger.error(error);
