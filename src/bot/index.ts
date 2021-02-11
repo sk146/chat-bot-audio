@@ -1,6 +1,5 @@
 import { Context, Telegraf } from "telegraf";
 import * as dotenv from "dotenv";
-import * as fs from "fs";
 import { logger } from "../config";
 import { getAudio } from "../youtube";
 dotenv.config();
@@ -25,32 +24,4 @@ bot.on("message", async (ctx: Context) => {
   }
 });
 
-/*
-
-
-   audio.on("info", (info: any) => {
-      logger.info("Download started");
-      logger.info("filename: " + info._filename);
-      logger.info("size: " + info.size);
-    });
-
- const { message }: any = ctx.update;
-    const { text } = message;
-    //const video = getVideoStream("https://youtu.be/wFkp1-vJhfo");
-    //ctx.replyWithAudio({ source: video }); www.youtube.com https://youtu.be/wFkp1-vJhfo
-    const url = new URL(text);
-    logger.info(url.host);
-    logger.info("Download started");
-    await ctx.reply("Send me a link from youtube");
-
-bot.hears("hi", (ctx: any) => {
-  const video = getVideoStream("https://youtu.be/wFkp1-vJhfo");
-  video.on("info", (info: any) => {
-    logger.info("Download started");
-    logger.info("filename: " + info._filename);
-    logger.info("size: " + info.size);
-  });
-  ctx.replyWithAudio({ source: video });
-});
-*/
 export { bot };

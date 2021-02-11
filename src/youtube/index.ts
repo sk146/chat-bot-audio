@@ -8,8 +8,8 @@ const getAudio = async (url: URL) => {
   const info = await new Promise<any>((resolve, reject) => {
     youtubedl.getInfo(url.toString(), [], {}, (err: any, output: Info) => {
       if (err) {
-        reject(err); // calling `reject` will cause the promise to fail with or without the error passed as an argument
-        return; // and we don't want to go any further
+        reject(err);
+        return;
       }
       resolve(output);
     });
@@ -19,17 +19,9 @@ const getAudio = async (url: URL) => {
   return { source, filename };
 };
 
-// sourc, filename
-/*
-
-if (!(url.host === "youtu.be")) {
-  throw new Error("host not found");
-}
-
-*/
 const getAudioStream = (url: URL) => {
   return youtubedl(
-    url.toString(), //-o "%(title)s.%(ext)s"
+    url.toString(),
     ["--extract-audio", "--audio-format", "mp3", "-o", "%(title)s.%(ext)s"],
     {}
   );
