@@ -1,17 +1,17 @@
 import { logger } from "../config";
 import * as youtube from "../youtube/youtube.service";
+import * as host from "../youtube/host.service";
 import { UnknownHost } from "./errors";
 
 const getYoutubeAudio = async (url: URL) => {
-  const whitelist = ["youtu.be", "www.youtube.com", "music.youtube.com"];
-  if (!whitelist.includes(url.host)) {
+  if (!host.checkHost(url)) {
     throw new UnknownHost(`Unknown host ${url.host}`);
   }
   const info = await youtube.getInfo(url);
-  const source = youtube.getAudioStream(url);
-  const filename = `${info["fulltitle"]}.mp3`;
-  logger.info(filename);
-  return { source, filename };
+  const name = info["fulltitle"] ? info["fulltitle"] : "audio";
+  const filename = `${name}.mp3`;
+
+  return { filename, source: youtube.getAudioStream(url) };
 };
 
 export { getYoutubeAudio };

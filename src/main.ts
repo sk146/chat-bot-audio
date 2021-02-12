@@ -1,5 +1,3 @@
-import * as fs from "fs";
-
 import { bot } from "./bot";
 
 bot.launch();
