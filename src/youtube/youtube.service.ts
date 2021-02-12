@@ -1,7 +1,7 @@
 import youtubedl from "youtube-dl";
 
 const getInfo: any = async (url: URL) => {
-  return new Promise<youtubedl.Info>((resolve, reject) => {
+  return new Promise<youtubedl.Info>((resolve: any, reject: any) => {
     youtubedl.getInfo(
       url.toString(),
       [],
