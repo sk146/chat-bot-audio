@@ -10,10 +10,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-
+Draft.md
 # OS
 .DS_Store
-
+./src/playground.ts
 # Tests
 /coverage
 /.nyc_output

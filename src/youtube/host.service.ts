@@ -1,5 +1,3 @@
-import { UnknownHost } from "./errors";
-
 const checkHost = (url: URL) => {
   let res = false;
   const whitelist = ["youtu.be", "www.youtube.com", "music.youtube.com"];

@@ -1,7 +1,7 @@
-export class UnknownHost extends Error {
+export class UnknownHostError extends Error {
   constructor(message?: string) {
-    super(message); // 'Error' breaks prototype chain here
-    this.name = UnknownHost.name;
-    Object.setPrototypeOf(this, new.target.prototype); // restore prototype chain
+    super(message);
+    this.name = UnknownHostError.name;
+    Object.setPrototypeOf(this, new.target.prototype);
   }
 }
