@@ -3,6 +3,7 @@ import * as host from '../youtube';
 import { UnknownHostError } from './errors';
 import { YoutubeInfo } from '../youtube';
 import { InlineKeyboardMarkup } from 'telegraf/typings/telegram-types';
+import { logger } from '../config';
 
 export type YoutubeInfoWithKeybord = {
   message: string;
@@ -37,6 +38,7 @@ const getYoutubeAudio = async (url: URL) => {
     throw new UnknownHostError(`Unknown host ${url.host}`);
   }
   const info: YoutubeInfo = await youtube.getInfo(url);
+  const artist = info.artist.split(',').shift();
   return {
     stream: { source: youtube.getAudioStream(url) },
     extra: {
