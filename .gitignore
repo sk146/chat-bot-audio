@@ -4,7 +4,6 @@
 .env
 Dockerfile
 docker-compose.yml
-package-lock.json
 # Logs
 logs
 *.log
