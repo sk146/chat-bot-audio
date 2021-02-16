@@ -34,6 +34,5 @@ bot.on('callback_query', async (ctx: UpdateContext) => {
     ctx.replyWithAudio(audio.stream, audio.extra);
   } catch (error) {
     logger.warn(error.message);
-    await ctx.reply(error.message);
   }
 });

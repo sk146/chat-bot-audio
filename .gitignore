@@ -4,6 +4,7 @@
 .env
 Dockerfile
 docker-compose.yml
+./test.ts
 # Logs
 logs
 *.log
