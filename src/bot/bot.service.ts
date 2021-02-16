@@ -3,7 +3,6 @@ import * as host from '../youtube';
 import { UnknownHostError } from './errors';
 import { YoutubeInfo } from '../youtube';
 import { InlineKeyboardMarkup } from 'telegraf/typings/telegram-types';
-import { logger } from '../config';
 
 export type YoutubeInfoWithKeybord = {
   message: string;
