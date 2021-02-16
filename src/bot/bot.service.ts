@@ -15,7 +15,7 @@ const getYoutubeInfo = async (url: URL): Promise<YoutubeInfoWithKeybord> => {
   }
 
   const info: YoutubeInfo = await youtube.getInfo(url);
-  const artist = info.artist.split(',').shift();
+  const artist = info.artist ? info.artist.split(',').shift() : 'Unknown';
   const message = `${artist} - ${info.title}`;
   const buttons = [
     {
@@ -37,13 +37,13 @@ const getYoutubeAudio = async (url: URL) => {
     throw new UnknownHostError(`Unknown host ${url.host}`);
   }
   const info: YoutubeInfo = await youtube.getInfo(url);
-  const artist = info.artist.split(',').shift();
+  const artist = info.artist ? info.artist.split(',').shift() : 'Unknown';
   return {
     stream: { source: youtube.getAudioStream(url) },
     extra: {
       ...info,
       title: info.title,
-      performer: info.artist.split(',').shift(),
+      performer: artist,
     },
   };
 };
