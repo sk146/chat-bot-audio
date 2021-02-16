@@ -2,5 +2,5 @@ export type YoutubeInfo = {
   fulltitle: string;
   title: string;
   filesize: number;
-  artist: string;
+  artist: 'audio';
 };
