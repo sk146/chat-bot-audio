@@ -10,8 +10,7 @@ const getYoutubeAudio = async (url: URL) => {
     throw new UnknownHostError(`Unknown host ${url.host}`);
   }
   const info: YoutubeInfo = await youtube.getInfo(url);
-
-  const artist = info.artist ? info.artist.split(',').shift() : 'Unknown';
+  const artist = info.artist ? info.artist.split(',').shift() : '';
   return {
     stream: { source: youtube.getAudioStream(url) },
     extra: {

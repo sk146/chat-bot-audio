@@ -10,7 +10,6 @@ bot.on('message', async (ctx: Context) => {
   try {
     const url = new URL(text);
     const audio = await service.getYoutubeAudio(url);
-    ctx.deleteMessage(message.message_id);
     ctx.replyWithAudio(audio.stream, audio.extra);
   } catch (error) {
     logger.warn(error.message);
